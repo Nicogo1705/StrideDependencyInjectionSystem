@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stride.DepInjection
+namespace StrideDependencyInjectionSystem
 {
     public class InjectionService
     {

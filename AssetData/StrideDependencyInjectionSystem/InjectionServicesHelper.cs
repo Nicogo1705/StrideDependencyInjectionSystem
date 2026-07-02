@@ -8,7 +8,7 @@ using Stride.Engine;
 using Stride.Engine.Design;
 using Stride.Games;
 
-namespace Stride.DepInjection
+namespace StrideDependencyInjectionSystem
 {
     public static class InjectionServicesHelper
     {

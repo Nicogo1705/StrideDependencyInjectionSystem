@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 16.0.0.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.DependencyInjection", "AssetData\Stride.DependencyInjection\Stride.DependencyInjection.csproj", "{994AEA43-8958-4308-972E-8C8E9BC74738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrideDependencyInjectionSystem", "AssetData\StrideDependencyInjectionSystem\StrideDependencyInjectionSystem.csproj", "{994AEA43-8958-4308-972E-8C8E9BC74738}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.DependencyInjection.Demo", "Stride.DependencyInjection.Demo\Stride.DependencyInjection.Demo.csproj", "{29F98FB3-FC9B-4943-9AC2-EA4EA8C56ABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", "{29F98FB3-FC9B-4943-9AC2-EA4EA8C56ABB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.DependencyInjection.Demo.Windows", "Stride.DependencyInjection.Demo.Windows\Stride.DependencyInjection.Demo.Windows.csproj", "{0D6D3864-6F50-45EF-A052-DA99221A4D3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Windows", "Demo.Windows\Demo.Windows.csproj", "{0D6D3864-6F50-45EF-A052-DA99221A4D3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

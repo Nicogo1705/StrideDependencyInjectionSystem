@@ -1,7 +1,7 @@
 using System;
 using Stride.Engine;
 
-namespace Stride.DepInjection.Demo
+namespace Demo.Windows
 {
     class Program
     {

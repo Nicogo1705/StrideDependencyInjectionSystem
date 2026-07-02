@@ -3,8 +3,9 @@ using Stride.Core;
 using Stride.Core.Mathematics;
 using Stride.Engine;
 using Stride.Input;
+using StrideDependencyInjectionSystem;
 
-namespace Stride.DepInjection.Demo
+namespace Demo
 {
 
     public class Sword : SyncScript

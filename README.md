@@ -9,7 +9,7 @@ no service-locator boilerplate in every script.
 **1 — Register your services once** (e.g. from a `StartupScript` in your scene):
 
 ```csharp
-using Stride.DepInjection;
+using StrideDependencyInjectionSystem;
 
 public class GameServices : StartupScript
 {
@@ -27,7 +27,7 @@ public class GameServices : StartupScript
 **2 — Inject into any script** — mark a public `get`/`set` property with `[Inject]`:
 
 ```csharp
-using Stride.DepInjection;
+using StrideDependencyInjectionSystem;
 
 public class Sword : SyncScript
 {

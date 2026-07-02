@@ -4,7 +4,7 @@ using Stride.Core.Mathematics;
 using Stride.Engine;
 using Stride.Input;
 
-namespace Stride.DepInjection.Demo
+namespace Demo
 {
     /// <summary>
     /// A script that allows to move and rotate an entity through keyboard, mouse and touch input to provide basic camera navigation.

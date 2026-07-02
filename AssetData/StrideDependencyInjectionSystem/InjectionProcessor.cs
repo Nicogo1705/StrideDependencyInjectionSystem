@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Stride.Core.Annotations;
 using Stride.Engine;
 
-namespace Stride.DepInjection
+namespace StrideDependencyInjectionSystem
 {
     public class InjectionProcessor : EntityProcessor<ScriptComponent>
     {

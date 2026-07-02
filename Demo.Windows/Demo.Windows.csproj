@@ -1,19 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Stride.DepInjection.Demo.Windows</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Demo.Windows</RootNamespace>
     <OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+    <StrideCurrentPackagePath>$(MSBuildThisFileDirectory)..\Demo\Demo.sdpkg</StrideCurrentPackagePath>
+    <StrideProjectType>Executable</StrideProjectType>
+    <StridePlatform>Windows</StridePlatform>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Stride.DependencyInjection.Demo\Stride.DependencyInjection.Demo.csproj" />
+    <ProjectReference Include="..\Demo\Demo.csproj" />
   </ItemGroup>
 
 </Project>
