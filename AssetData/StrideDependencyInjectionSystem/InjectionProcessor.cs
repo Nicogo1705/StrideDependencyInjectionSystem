@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Stride.Core.Annotations;
 using Stride.Engine;
 
 namespace StrideDependencyInjectionSystem
 {
+    /// <summary>
+    /// Scans every <see cref="ScriptComponent"/> as it enters the scene, fills its
+    /// <see cref="InjectAttribute"/>-marked properties from the <see cref="InjectionService"/>,
+    /// and clears them when the component leaves.
+    /// </summary>
     public class InjectionProcessor : EntityProcessor<ScriptComponent>
     {
-        private InjectionService _injectionService;
+        private InjectionService _injectionService = null!;
 
         protected override void OnSystemAdd()
         {
@@ -19,41 +20,35 @@ namespace StrideDependencyInjectionSystem
             base.OnSystemAdd();
         }
 
-#warning Maybe add to "OnSystemAdd" a foreach of all ScriptComponent & set their Injection fields
-
         protected override void OnEntityComponentAdding(Entity entity, [NotNull] ScriptComponent component, [NotNull] ScriptComponent data)
         {
-            var componentType = component.GetType();
-            foreach (var item in componentType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            foreach (var property in component.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
-                var injectAttribute = item.GetCustomAttribute<InjectAttribute>();
-                if (injectAttribute == null)
+                var injectAttribute = property.GetCustomAttribute<InjectAttribute>();
+                if (injectAttribute == null || !property.CanWrite)
                     continue;
 
-                if (injectAttribute.InjectionType == InjectionType.Static)
-                    item.SetValue(component, _injectionService.GetStatic(item.PropertyType));
-                else if (injectAttribute.InjectionType == InjectionType.dynamic)
-                    item.SetValue(component, _injectionService.GetDynamic(item.PropertyType));
-                else
-                    throw new NotImplementedException($"{injectAttribute.InjectionType}");
+                object? value = injectAttribute.InjectionType switch
+                {
+                    InjectionType.Static => _injectionService.GetStatic(property.PropertyType),
+                    InjectionType.Dynamic => _injectionService.GetDynamic(property.PropertyType),
+                    _ => throw new NotImplementedException($"{injectAttribute.InjectionType}"),
+                };
+                property.SetValue(component, value);
             }
             base.OnEntityComponentAdding(entity, component, data);
         }
 
         protected override void OnEntityComponentRemoved(Entity entity, [NotNull] ScriptComponent component, [NotNull] ScriptComponent data)
         {
-
-            var componentType = component.GetType();
-            foreach (var item in componentType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            foreach (var property in component.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
-                var injectAttribute = item.GetCustomAttribute<InjectAttribute>();
-                if (injectAttribute == null)
+                if (property.GetCustomAttribute<InjectAttribute>() == null || !property.CanWrite)
                     continue;
 
-                item.SetValue(component, null);
+                property.SetValue(component, null);
             }
             base.OnEntityComponentRemoved(entity, component, data);
         }
-
     }
 }

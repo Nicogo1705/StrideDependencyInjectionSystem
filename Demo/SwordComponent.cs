@@ -20,7 +20,12 @@ namespace Demo
 
         public override void Update()
         {
-            Console.WriteLine($"val : {Val}\nWdp : {Wdp.GetDamage(33)}");
+            // These fields were never set in code — they are filled by the DI library
+            // from [Inject]. Showing them on screen proves the injection resolved.
+            DebugText.Print("Stride Dependency Injection — resolved via [Inject]:", new Int2(20, 20));
+            DebugText.Print($"[Inject] int Val            = {Val}", new Int2(28, 44));
+            DebugText.Print($"[Inject] Wdp.ProviderUrl    = {Wdp?.ProviderUrl ?? "<null>"}", new Int2(28, 64));
+            DebugText.Print($"[Inject] Wdp.GetDamage(33)  = {(Wdp is null ? "<null>" : Wdp.GetDamage(33).ToString())}", new Int2(28, 84));
         }
     }
 

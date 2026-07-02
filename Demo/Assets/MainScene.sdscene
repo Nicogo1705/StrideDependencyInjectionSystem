@@ -68,7 +68,7 @@ Hierarchy:
                                 PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
                                 ComputeTransmittance: false
                                 BiasParameters: {}
-                        Intensity: 20.0
+                        Intensity: 2.5
         -   Entity:
                 Id: 7ac78b2f-3163-4e09-a0e6-899cf23fccf4
                 Name: SetupScripts
